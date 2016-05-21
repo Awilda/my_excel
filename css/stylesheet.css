@@ -2,7 +2,8 @@ section {
 	border: 1px solid black;
 }
 td {
-   border: 1px solid black;
-   height: 2em;
-   width: 5em;
+  border: 1px solid black;
+  height: 2em;
+  width: 5em;
+  text-align: center;
 }
