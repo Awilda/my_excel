@@ -7,3 +7,6 @@ td {
   width: 5em;
   text-align: center;
 }
+.highlight {
+  background-color: lightyellow;
+}
