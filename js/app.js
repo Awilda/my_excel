@@ -10,14 +10,32 @@ function addCells() {
  		}
 };
 
-function highlightColumn(e) {
-	var columnLetter = e.target.className;
-  var columnNumber = letters.indexOf(columnLetter) + 1;
+function highlightColumn(event) {
+	var columnLetter = event.target.className; // "A highlight"
+  var columnNumber = letters.indexOf(columnLetter) + 1; // -1 + 1 = 0
+	
+  if (columnNumber != 0) {
+  	var table = document.getElementById("myTable");
+  	for (var counter = 0; counter <= numbers.length; counter++){
+  	  var column = table.rows[counter].cells[columnNumber]; // [x][0]
+      column.classList.add("highlight");
+  	}
+  }
+}
 
-  var table = document.getElementById("myTable");
-  for (var counter = 0; counter <= numbers.length; counter++){
-  	var column = table.rows[counter].cells[columnNumber];
-    column.classList.add("highlight");
+function unhighlight(e) {
+	var columnLetter = e.target.className;
+  console.log(columnLetter);
+  var columnNumber = letters.indexOf(columnLetter); // "A highlight"
+  
+  if (columnNumber === -1) {
+	  columnNumber = letters.indexOf(columnLetter.charAt(0));
+
+  	var table = document.getElementById("myTable");
+  	for (var counter = 0; counter <= numbers.length; counter++){
+  		var column = table.rows[counter].cells[columnNumber + 1];
+  		column.classList.remove("highlight");    
+  	}
   }
 }
 
@@ -29,8 +47,16 @@ function newSheet(){
 	/* A-G */
   for (var counter = 1; counter <= letters.length; counter++) {
   	var cell = document.getElementById('myTable').rows[0].cells[counter];
-    cell.innerHTML = letters[counter-1];
-    cell.addEventListener("click", highlightColumn);
+    cell.innerHTML = letters[counter-1];    
+    cell.addEventListener("click", function (event) {
+    	// Decide here if should highlight or unhighlight
+      // GO!
+      if (event.target.classList.contains("highlight")) {
+      	unhighlight(event);
+      } else {
+      	highlightColumn(event);
+      }
+    });
     cell.classList.add(letters[counter-1]);
   }
   
@@ -50,6 +76,3 @@ function newSheet(){
 };
 
 window.onload = newSheet();
-
-
-
