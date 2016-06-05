@@ -10,9 +10,15 @@ function addCells() {
   }
 };
 
+// Highlight Entire Table
+function hightlightTable(event) {
+	var table = document.getElementById("myTable")
+	table.classList.add("highlight");
+}
+
 // Highlight/Unhighlight Columns
 function highlightColumn(event) {
-  var columnLetter = event.target.className; // "A highlight"
+  var columnLetter = event.target.className; // "A"
   var columnNumber = letters.indexOf(columnLetter) + 1; // -1 + 1 = 0
 
   if (columnNumber != 0) {
@@ -24,9 +30,9 @@ function highlightColumn(event) {
   }
 }
 
-function unhighlightColumn(e) {
-  var columnLetter = e.target.className;
-  var columnNumber = letters.indexOf(columnLetter); // "A highlight"
+function unhighlightColumn(e) { 
+  var columnLetter = e.target.className; // "A Highlight"
+  var columnNumber = letters.indexOf(columnLetter);
 
   if (columnNumber === -1) {
     columnNumber = letters.indexOf(columnLetter.charAt(0));
@@ -41,7 +47,7 @@ function unhighlightColumn(e) {
 
 // Hightlight/Unhighlight Rows
 function highlightRow(event) {
-  var rowNumber = event.target.className; // "1 highlight"
+  var rowNumber = event.target.className; // "1"
   var rowLetter = numbers.indexOf(rowNumber) + 1; // 0
 
   if (rowLetter != -1) {
@@ -54,24 +60,31 @@ function highlightRow(event) {
 }
 
 function unhighlightRow(event) {
-  var rowNumber = event.target.className;
-  var rowLetter = numbers.indexOf(rowNumber) + 1;
+  var rowNumber = event.target.className; // "1 Highlight"
+  var rowLetter = numbers.indexOf(rowNumber);
 
   if (rowLetter === -1) {
-    rowLetter = numbers.indexOf(rowNumber.charAt(0));
+    rowLetter = numbers.indexOf(parseInt(rowNumber.charAt(0)));
 
     var table = document.getElementById("myTable");
     for (var counter = 0; counter <= letters.length; counter++) {
-      var row = table.rows[rowNumber + 1].cells[counter];
+      var row = table.rows[rowLetter + 1].cells[counter];
       row.classList.remove("highlight");
     }
   }
 }
 
+
 function newSheet() {
   for (var x = 0; x < 8; x++) {
     spreadsheet = new addCells();
   }
+
+  // var fullTable = table.getElementById("myTable");
+  // var first = fullTable[0][]
+  // fullTable.addEventListener ("click", function()){
+  // 	if ()
+  // }
 
   /* A-G */
   for (var counter = 1; counter <= letters.length; counter++) {
