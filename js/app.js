@@ -74,17 +74,32 @@ function unhighlightRow(event) {
   }
 }
 
+function hightlightTable() {
+	var table = document.getElementById("myTable");
+	table.classList.add("highlight");
+}
+
+function unhighlightTable() {
+	var table = document.getElementById("myTable");
+	table.classList.remove("highlight");
+}
+
 
 function newSheet() {
   for (var x = 0; x < 8; x++) {
     spreadsheet = new addCells();
   }
 
-  // var fullTable = table.getElementById("myTable");
-  // var first = fullTable[0][]
-  // fullTable.addEventListener ("click", function()){
-  // 	if ()
-  // }
+  var fullTable = document.getElementById("myTable");
+  var firstCell = fullTable.rows[0].cells[0];
+  firstCell.addEventListener ("click", function() {
+  	if (fullTable.classList.contains("highlight")) {
+  		unhighlightTable();
+  		console.log("hi");
+  	} else { 
+  		hightlightTable();
+  	}
+  });
 
   /* A-G */
   for (var counter = 1; counter <= letters.length; counter++) {
