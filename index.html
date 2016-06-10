@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
@@ -8,14 +8,24 @@
 	<link rel="stylesheet" type="text/css" href="css/stylesheet.css">
 	<script type="text/javascript" src="js/app.js"></script>
 </head>
-<body onload="newSheet()">	
+<body onload="init()">	
 	<h1>My Excel</h1>
 	<h3>The vanilla way...</h3>
 		<table id="myTable">
 		</table>
-	<ul class="tabs">
-			<li><a href= "#" id="myTable">Sheet 1</a></li>
-			<li><a href= "#" class="newSheets">New Sheet</a>
+	<div class="tabContent" id="sheet1">
+		<p>Hey hey!!</p>
+	</div>
+		<div class="tabContent" id="sheet2" onclick="newSheet()">
+		<p>Bye Bye Bye!!</p>
+	</div>
+		<div class="tabContent" id="sheet3">
+		<p>Fuck yea!!</p>
+	</div>	
+	<ul id="tabs">
+			<li><a href= "#sheet1">Sheet 1</a></li>
+			<li><a href= "#sheet2">Sheet 2</a></li>
+			<li><a href= "#sheet3">Sheet 3</a></li>
 	</ul>
 </body>
 </html>
